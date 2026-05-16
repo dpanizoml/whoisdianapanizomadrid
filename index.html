@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Diana Panizo Madrid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green:#1E3D2F;--green-mid:#2D5A42;--green-light:#4A8C65;
+  --green-pale:#C8DDD1;--green-wash:#EDF4EF;
+  --cream:#F8F5EE;--cream-dark:#EDE9DF;
+  --ink:#0F1A14;--muted:#4A5D52;--border:rgba(30,61,47,0.15);
+  --sidebar:260px;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7;display:flex;}
+
+/* SIDEBAR */
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar);background:var(--green);display:flex;flex-direction:column;padding:2.5rem 2rem;z-index:100;justify-content:space-between;}
+.sidebar-name{font-family:var(--serif);font-size:1.1rem;font-weight:900;color:var(--cream);line-height:1.2;margin-bottom:0.4rem;}
+.sidebar-role{font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-pale);margin-bottom:3rem;}
+.sidebar-nav{display:flex;flex-direction:column;gap:0.25rem;list-style:none;flex:1;}
+.sidebar-nav a{display:flex;align-items:center;gap:0.75rem;font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;color:rgba(248,245,238,0.55);padding:0.6rem 0.75rem;border-radius:4px;transition:background 0.2s,color 0.2s;}
+.sidebar-nav a:hover,.sidebar-nav a.active{background:rgba(255,255,255,0.08);color:var(--cream);}
+.sidebar-nav a .nav-dot{width:5px;height:5px;border-radius:50%;background:var(--green-pale);opacity:0.4;flex-shrink:0;transition:opacity 0.2s;}
+.sidebar-nav a.active .nav-dot,.sidebar-nav a:hover .nav-dot{opacity:1;}
+.sidebar-bottom{display:flex;flex-direction:column;gap:0.6rem;}
+.sidebar-link{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--green-pale);transition:color 0.2s;display:flex;align-items:center;gap:0.4rem;}
+.sidebar-link:hover{color:var(--cream);}
+.sidebar-link::after{content:'&#8599;';font-size:9px;}
+
+/* MAIN */
+.main{margin-left:var(--sidebar);flex:1;min-height:100vh;}
+
+/* SECTIONS */
+.section{padding:5rem 6rem 5rem 5rem;border-bottom:1.5px solid var(--border);}
+.section:last-child{border-bottom:none;}
+.section-label{display:flex;align-items:center;gap:1rem;margin-bottom:3rem;}
+.section-label span{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+.section-label::after{content:'';flex:1;height:1.5px;background:var(--border);}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:900;color:var(--green);line-height:1.05;margin-bottom:1.25rem;}
+.section-title em{font-style:italic;color:var(--green-light);}
+
+/* HERO */
+#hero{padding:6rem 6rem 5rem 5rem;min-height:100vh;display:flex;flex-direction:column;justify-content:center;border-bottom:1.5px solid var(--border);}
+.hero-tag{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green-light);margin-bottom:2rem;display:flex;align-items:center;gap:0.75rem;}
+.hero-tag::before{content:'';display:block;width:28px;height:2px;background:var(--green-light);}
+.hero-name{font-family:var(--serif);font-size:clamp(4rem,7vw,7rem);font-weight:900;line-height:0.9;letter-spacing:-0.03em;color:var(--green);margin-bottom:2rem;}
+.hero-name span{display:block;font-style:italic;font-weight:700;color:var(--green-light);}
+.hero-bio{font-size:1.12rem;color:var(--muted);line-height:1.85;max-width:520px;margin-bottom:2.5rem;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem;}
+.chip{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.9rem;border:1.5px solid var(--green-pale);color:var(--green-mid);border-radius:100px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;padding:0.85rem 2rem;background:var(--green);color:var(--cream);transition:background 0.2s;}
+.btn-primary:hover{background:var(--green-mid);}
+.btn-outline{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;padding:0.85rem 2rem;border:2px solid var(--green);color:var(--green);transition:background 0.2s,color 0.2s;}
+.btn-outline:hover{background:var(--green);color:var(--cream);}
+
+/* ABOUT */
+#about{background:var(--cream-dark);}
+.about-text p{color:var(--muted);margin-bottom:1rem;font-size:1.02rem;}
+.about-text p:last-child{margin-bottom:0;}
+.about-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2rem;margin-top:2.5rem;padding-top:2rem;border-top:1.5px solid var(--border);}
+.meta-k{font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-light);margin-bottom:0.2rem;}
+.meta-v{font-size:0.93rem;color:var(--ink);line-height:1.5;}
+
+/* EXPERIENCE */
+.work-row{display:grid;grid-template-columns:160px 1fr auto;gap:1.5rem 2.5rem;padding:2rem 0;border-bottom:1.5px solid var(--border);align-items:start;}
+.work-row:first-child{border-top:1.5px solid var(--border);}
+.work-date{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;color:var(--muted);white-space:nowrap;padding-top:0.3rem;}
+.work-title{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--green);margin-bottom:0.15rem;line-height:1.2;}
+.work-org{
+  font-family:var(--serif);
+  font-size:1rem;
+  font-style:italic;
+  font-weight:400;
+  color:var(--green-mid);
+  margin-bottom:0.55rem;
+  letter-spacing:0;
+}
+.work-desc{font-size:0.92rem;color:var(--muted);line-height:1.75;}
+.work-badge{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;background:var(--green-wash);color:var(--green-mid);padding:0.28rem 0.75rem;border:1px solid var(--green-pale);white-space:nowrap;align-self:start;}
+
+/* WRITING */
+#writing{background:var(--cream-dark);}
+.writing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.writing-card{background:var(--cream);border:1.5px solid var(--border);display:flex;flex-direction:column;}
+.writing-card-top{background:var(--green);padding:1.5rem;min-height:110px;display:flex;flex-direction:column;justify-content:flex-end;}
+.writing-type{font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-pale);margin-bottom:0.5rem;}
+.writing-title{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--cream);line-height:1.25;}
+.writing-body{padding:1.25rem;flex:1;display:flex;flex-direction:column;}
+.writing-excerpt{font-size:0.88rem;color:var(--muted);line-height:1.7;flex:1;margin-bottom:1.25rem;}
+.writing-meta{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-light);margin-bottom:1rem;}
+.writing-actions{display:flex;gap:0.75rem;flex-wrap:wrap;}
+.w-btn{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.4rem 0.9rem;border:1.5px solid var(--green);color:var(--green);transition:background 0.2s,color 0.2s;}
+.w-btn:hover{background:var(--green);color:var(--cream);}
+.w-btn.filled{background:var(--green);color:var(--cream);}
+.w-btn.filled:hover{background:var(--green-mid);}
+
+/* PERSONAL */
+.personal-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;}
+.personal-card{border:1.5px solid var(--border);overflow:hidden;}
+.personal-card-header{padding:1.5rem 1.5rem 0;display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem;}
+.personal-icon{width:44px;height:44px;background:var(--green-wash);border:1.5px solid var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.personal-card-title{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--green);line-height:1.2;}
+.personal-card-sub{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green-light);margin-top:0.2rem;}
+.personal-card-body{padding:0 1.5rem 1.5rem;font-size:0.9rem;color:var(--muted);line-height:1.75;}
+.personal-card.accent{background:var(--green);}
+.personal-card.accent .personal-card-title{color:var(--cream);}
+.personal-card.accent .personal-card-sub{color:var(--green-pale);}
+.personal-card.accent .personal-card-body{color:rgba(248,245,238,0.8);}
+.personal-card.accent .personal-icon{background:rgba(255,255,255,0.1);border-color:rgba(200,221,209,0.4);}
+
+/* AWARDS */
+.awards-row{display:flex;justify-content:space-between;align-items:baseline;gap:2rem;padding:1.5rem 0;border-bottom:1.5px solid var(--border);}
+.awards-row:first-child{border-top:1.5px solid var(--border);}
+.award-title{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--green);}
+.award-sub{font-size:0.88rem;color:var(--muted);margin-top:0.15rem;}
+.award-yr{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:var(--muted);white-space:nowrap;}
+
+/* CONTACT */
+#contact{background:var(--green);}
+#contact .section-label span{color:var(--green-pale);}
+#contact .section-label::after{background:rgba(200,221,209,0.3);}
+#contact .section-title{color:var(--cream);}
+#contact .section-title em{color:var(--green-pale);}
+.contact-sub{font-size:1rem;color:rgba(248,245,238,0.75);line-height:1.8;margin-bottom:2rem;max-width:480px;}
+.contact-links-stack{display:flex;flex-direction:column;gap:0.75rem;max-width:480px;}
+.contact-link-row{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border:1.5px solid rgba(200,221,209,0.3);text-decoration:none;transition:background 0.2s,border-color 0.2s;}
+.contact-link-row:hover{background:rgba(255,255,255,0.07);border-color:var(--green-pale);}
+.contact-link-label{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream);}
+.contact-link-arrow{font-size:1rem;color:var(--green-pale);}
+
+/* MOBILE */
+.mobile-nav{display:none;}
+@media(max-width:768px){
+  .sidebar{display:none;}
+  .main{margin-left:0;}
+  .mobile-nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    background:var(--green);
+    padding:1rem 1.5rem;
+  }
+  .mobile-nav-name{font-family:var(--serif);font-size:1rem;font-weight:900;color:var(--cream);}
+  .mobile-menu-btn{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--green-pale);background:none;border:1px solid rgba(200,221,209,0.4);
+    padding:0.4rem 0.8rem;cursor:pointer;
+  }
+  .mobile-menu{
+    display:none;position:fixed;top:52px;left:0;right:0;bottom:0;z-index:199;
+    background:var(--green);padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;
+    overflow-y:auto;
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    font-family:var(--mono);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;
+    text-decoration:none;color:rgba(248,245,238,0.7);padding:1rem 0;
+    border-bottom:1px solid rgba(200,221,209,0.15);
+  }
+  .mobile-menu a:hover{color:var(--cream);}
+  #hero,.section{padding:5rem 1.5rem 3rem;}
+  #hero{padding-top:6rem;min-height:auto;}
+  .work-row{grid-template-columns:1fr;gap:0.5rem;}
+  .work-badge{display:none;}
+  .writing-grid{grid-template-columns:1fr;}
+  .personal-grid{grid-template-columns:1fr;}
+  .about-meta-grid{grid-template-columns:1fr;}
+  .hero-name{font-size:clamp(3rem,12vw,4.5rem);}
+}
+</style>
+</head>
+<body>
+
+<nav class="mobile-nav">
+  <span class="mobile-nav-name">Diana Panizo Madrid</span>
+  <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('open')">Menu</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="document.getElementById('mobileMenu').classList.remove('open')">Home</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#work" onclick="document.getElementById('mobileMenu').classList.remove('open')">Experience</a>
+  <a href="#writing" onclick="document.getElementById('mobileMenu').classList.remove('open')">Research</a>
+  <a href="#personal" onclick="document.getElementById('mobileMenu').classList.remove('open')">Beyond Work</a>
+  <a href="#awards" onclick="document.getElementById('mobileMenu').classList.remove('open')">Awards</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+</div>
+
+<aside class="sidebar">
+  <div>
+    <div class="sidebar-name">Diana<br>Panizo Madrid</div>
+    <div class="sidebar-role">Behavioural Scientist &#183; AI Researcher</div>
+    <ul class="sidebar-nav">
+      <li><a href="#hero" class="active"><span class="nav-dot"></span>Home</a></li>
+      <li><a href="#about"><span class="nav-dot"></span>About</a></li>
+      <li><a href="#work"><span class="nav-dot"></span>Experience</a></li>
+      <li><a href="#writing"><span class="nav-dot"></span>Research</a></li>
+      <li><a href="#personal"><span class="nav-dot"></span>Beyond Work</a></li>
+      <li><a href="#awards"><span class="nav-dot"></span>Awards</a></li>
+      <li><a href="#contact"><span class="nav-dot"></span>Contact</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-bottom">
+    <a class="sidebar-link" href="mailto:dpanizoml@gmail.com">Email</a>
+    <a class="sidebar-link" href="https://www.linkedin.com/in/diana-panizo-madrid-a06522231/" target="_blank">LinkedIn</a>
+    <a class="sidebar-link" href="https://github.com/dpanizoml" target="_blank">GitHub</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section id="hero">
+    <div class="hero-tag">BSc Psychological and Behavioural Science with Economics &#183; LSE</div>
+    <h1 class="hero-name">Diana<br>Panizo<br><span>Madrid.</span></h1>
+    <p class="hero-bio">I work at the intersection of behavioural science and AI. My research asks how technology can be driven by genuine innovation and built around the people it serves.</p>
+    <div class="hero-chips">
+      <span class="chip">Behavioural Economics</span>
+      <span class="chip">AI Governance</span>
+      <span class="chip">UNDP Research</span>
+      <span class="chip">Cambridge MPhil</span>
+    </div>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#work">View my work</a>
+      <a class="btn-outline" href="#contact">Get in touch</a>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="section-label"><span>About</span></div>
+    <h2 class="section-title">Behavioural science<br>meets <em>real-world AI.</em></h2>
+    <div class="about-text">
+      <p>I am a researcher and analyst with a background in behavioural economics, cognitive psychology, and data science. For nearly three years I have worked at the Muthukrishna Lab at LSE, contributing to UNDP research on AI and human development, including the 2025 Human Development Report and the AI4HD Dashboard.</p>
+      <p>My dissertation examined algorithmic aversion in financial decision-making, asking who avoids delegating to algorithms in real, incentivised investment choices, and through which psychological mechanisms. I am also a published co-author in the Journal of Human Development and Capabilities.</p>
+      <p>I am a Nova Talent member, IE High Potential Award recipient, and hold two Academic Excellence Awards from LSE in Economics and Psychology.</p>
+    </div>
+    <div class="about-meta-grid">
+      <div><div class="meta-k">Currently</div><div class="meta-v">AI Research Assistant, Muthukrishna Lab at LSE</div></div>
+      <div><div class="meta-k">This summer</div><div class="meta-v">Incoming Intern, Electric Twin (AI startup)</div></div>
+      <div><div class="meta-k">Next</div><div class="meta-v">MPhil AI, Data and Algorithm Ethics, Cambridge</div></div>
+      <div><div class="meta-k">Languages</div><div class="meta-v">Spanish (native), English (native), French (basic)</div></div>
+    </div>
+  </section>
+
+  <section id="work" class="section">
+    <div class="section-label"><span>Experience</span></div>
+
+    <div class="work-row">
+      <div class="work-date">Summer 2025</div>
+      <div>
+        <div class="work-title">Forward Deployment Intern</div>
+        <div class="work-org">Electric Twin</div>
+        <div class="work-desc">Joining Electric Twin for a summer internship at the frontier of AI product development.</div>
+      </div>
+      <span class="work-badge">Startup</span>
+    </div>
+
+    <div class="work-row">
+      <div class="work-date">Oct 2023 to present</div>
+      <div>
+        <div class="work-title">UNDP AI Research Assistant</div>
+        <div class="work-org">Muthukrishna Lab, LSE</div>
+        <div class="work-desc">Contributed to flagship reports on AI integration in education shaping international tech policy. Conducted quantitative analyses and systematic literature reviews on AI in developing regions. Built R and Quarto data pipelines for country-level AI readiness scoring across 11 Asia-Pacific countries. Co-authored a peer-reviewed publication in the Journal of Human Development and Capabilities.</div>
+      </div>
+      <span class="work-badge">Research</span>
+    </div>
+
+    <div class="work-row">
+      <div class="work-date">Jun 2025 to Jul 2025</div>
+      <div>
+        <div class="work-title">AI Consulting Intern</div>
+        <div class="work-org">Innova-tsn</div>
+        <div class="work-desc">Led development of intelligent agents using Microsoft Copilot Studio for a client consulting project. The project was recognised with the HESPA Innovation Award and DataIQ's Most Innovative Use of AI in Europe. Designed and promoted AI-driven business solutions spanning BI, analytics, and cloud strategy.</div>
+      </div>
+      <span class="work-badge">Consulting</span>
+    </div>
+
+    <div class="work-row">
+      <div class="work-date">Feb 2024 to Apr 2025</div>
+      <div>
+        <div class="work-title">AI Tutor</div>
+        <div class="work-org">London School of Artificial Intelligence (LSAI)</div>
+        <div class="work-desc">Contributed to a research study bridging AI and education. Taught students to apply AI tools to enhance learning outcomes. Fostered an inclusive environment to support engagement and skill development.</div>
+      </div>
+      <span class="work-badge">Education</span>
+    </div>
+
+    <div class="work-row">
+      <div class="work-date">Apr 2022 to Jun 2022</div>
+      <div>
+        <div class="work-title">Summer Intern</div>
+        <div class="work-org">The Coca-Cola Company</div>
+        <div class="work-desc">Assisted with a human insights project for a product launch. Translated qualitative field feedback into quantitative data to assess consumer behaviour. Collaborated with marketing professionals on product strategy and consumer decision-making.</div>
+      </div>
+      <span class="work-badge">Industry</span>
+    </div>
+
+  </section>
+
+  <section id="writing" class="section">
+    <div class="section-label"><span>Research and Writing</span></div>
+    <div class="writing-grid">
+
+      <div class="writing-card">
+        <div class="writing-card-top">
+          <div class="writing-type">Peer-reviewed publication &#183; 2025</div>
+          <div class="writing-title">AI Can Revolutionise Education but Technology Is Not Enough</div>
+        </div>
+        <div class="writing-body">
+          <div class="writing-meta">Journal of Human Development and Capabilities &#183; Muthukrishna Lab / UNDP</div>
+          <div class="writing-excerpt">Co-authored with the Muthukrishna Lab and UNDP. Examines what it takes for AI to genuinely advance education and human development, placing technological adoption within a framework of cultural evolution and institutional capacity.</div>
+          <div class="writing-actions">
+            <a class="w-btn filled" href="https://doi.org/10.1080/19452829.2025.2517740" target="_blank">Read paper &#8599;</a>
+            <a class="w-btn" href="https://doi.org/10.1080/19452829.2025.2517740" target="_blank">DOI link</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="writing-card">
+        <div class="writing-card-top">
+          <div class="writing-type">BSc Dissertation &#183; LSE &#183; 2026</div>
+          <div class="writing-title">Who Avoids Algorithmic Delegation in Finance? Financial Knowledge and the Limits of Overconfidence in Robo-Advisor Adoption</div>
+        </div>
+        <div class="writing-body">
+          <div class="writing-meta">Behavioural Economics &#183; Algorithmic Aversion &#183; Financial Decision-Making</div>
+          <div class="writing-excerpt">Using secondary data from two pre-registered incentivised experiments (N = 1,448), this dissertation asks who avoids delegating to robo-advisors and why. The central finding: overconfidence had no effect on adoption. Financial literacy was the operative construct, with both objective and subjective knowledge independently predicting higher adoption. Structural factors, including age and gender, outperformed all psychological predictors.</div>
+          <div class="writing-actions">
+            <a class="w-btn filled" href="https://drive.google.com/file/d/1aGzYtH0AtgSyMAOY5ulRgBLUEJIopaR3/view?usp=sharing" target="_blank">Download PDF &#8595;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="writing-card">
+        <div class="writing-card-top">
+          <div class="writing-type">Policy contribution &#183; UNDP &#183; 2024 to 2025</div>
+          <div class="writing-title">UNDP 2025 Human Development Report</div>
+        </div>
+        <div class="writing-body">
+          <div class="writing-meta">UNDP &#183; 2025</div>
+          <div class="writing-excerpt">Contributed to the 2025 Human Development Report as part of the Muthukrishna Lab's UNDP collaboration, supporting research on AI and human development across countries and regions.</div>
+          <div class="writing-actions">
+            <a class="w-btn filled" href="https://hdr.undp.org/content/human-development-report-2025" target="_blank">View report &#8599;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="personal" class="section">
+    <div class="section-label"><span>Beyond Work</span></div>
+    <div class="personal-grid">
+
+      <div class="personal-card accent">
+        <div class="personal-card-header">
+          <div class="personal-icon">&#127383;</div>
+          <div>
+            <div class="personal-card-title">Volunteer</div>
+            <div class="personal-card-sub">CRIS Cancer Foundation</div>
+          </div>
+        </div>
+        <div class="personal-card-body">I volunteer with CRIS, a foundation dedicated to cancer research. It grounds me in why rigorous, evidence-based work matters beyond academia. The point of research is always the people it serves.</div>
+      </div>
+
+      <div class="personal-card">
+        <div class="personal-card-header">
+          <div class="personal-icon">&#127939;</div>
+          <div>
+            <div class="personal-card-title">Sport</div>
+            <div class="personal-card-sub">Athletics &#183; Volleyball</div>
+          </div>
+        </div>
+        <div class="personal-card-body">Ten years competing as a national track and field athlete. At university, I play volleyball for LSE and captain the team. Sport has been a constant across every stage of my life.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="awards" class="section">
+    <div class="section-label"><span>Awards and Recognition</span></div>
+    <div class="awards-row">
+      <div><div class="award-title">Nova Talent Member</div><div class="award-sub">International network recognising high-potential individuals across disciplines.</div></div>
+      <span class="award-yr">2024</span>
+    </div>
+    <div class="awards-row">
+      <div><div class="award-title">IE High Potential Award</div><div class="award-sub">Over &#163;60,000 in scholarship awarded.</div></div>
+      <span class="award-yr">2024</span>
+    </div>
+    <div class="awards-row">
+      <div><div class="award-title">Two Academic Excellence Awards</div><div class="award-sub">Subject awards in Economics and Psychology, LSE.</div></div>
+      <span class="award-yr">LSE</span>
+    </div>
+    <div class="awards-row">
+      <div><div class="award-title">Inside LVMH Certificate</div><div class="award-sub">8-week course in Operations and Supply Chain.</div></div>
+      <span class="award-yr">2024</span>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="section-label"><span>Contact</span></div>
+    <h2 class="section-title">Let's talk about<br><em>the future of AI.</em></h2>
+    <p class="contact-sub">I am always open to conversations about AI governance, behavioural science, research collaborations, or opportunities.</p>
+    <div class="contact-links-stack">
+      <a class="contact-link-row" href="mailto:dpanizoml@gmail.com"><span class="contact-link-label">dpanizoml@gmail.com</span><span class="contact-link-arrow">&#8599;</span></a>
+      <a class="contact-link-row" href="https://www.linkedin.com/in/diana-panizo-madrid-a06522231/" target="_blank"><span class="contact-link-label">LinkedIn</span><span class="contact-link-arrow">&#8599;</span></a>
+      <a class="contact-link-row" href="https://doi.org/10.1080/19452829.2025.2517740" target="_blank"><span class="contact-link-label">Published paper</span><span class="contact-link-arrow">&#8599;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.sidebar-nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
