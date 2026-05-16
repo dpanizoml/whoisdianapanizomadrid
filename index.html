@@ -39,7 +39,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 .main{margin-left:var(--sidebar);flex:1;min-height:100vh;}
 
 /* SECTIONS */
-.section{padding:5rem 5rem 5rem 4rem;max-width:860px;border-bottom:1.5px solid var(--border);}
+.section{padding:5rem 6rem 5rem 5rem;border-bottom:1.5px solid var(--border);}
 .section:last-child{border-bottom:none;}
 .section-label{display:flex;align-items:center;gap:1rem;margin-bottom:3rem;}
 .section-label span{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
@@ -48,7 +48,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 .section-title em{font-style:italic;color:var(--green-light);}
 
 /* HERO */
-#hero{padding:6rem 5rem 5rem 4rem;max-width:860px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;border-bottom:1.5px solid var(--border);}
+#hero{padding:6rem 6rem 5rem 5rem;min-height:100vh;display:flex;flex-direction:column;justify-content:center;border-bottom:1.5px solid var(--border);}
 .hero-tag{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green-light);margin-bottom:2rem;display:flex;align-items:center;gap:0.75rem;}
 .hero-tag::before{content:'';display:block;width:28px;height:2px;background:var(--green-light);}
 .hero-name{font-family:var(--serif);font-size:clamp(4rem,7vw,7rem);font-weight:900;line-height:0.9;letter-spacing:-0.03em;color:var(--green);margin-bottom:2rem;}
@@ -71,15 +71,16 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 .meta-v{font-size:0.93rem;color:var(--ink);line-height:1.5;}
 
 /* EXPERIENCE */
-.work-row{display:grid;grid-template-columns:140px 1fr auto;gap:1.5rem 2.5rem;padding:2rem 0;border-bottom:1.5px solid var(--border);align-items:start;}
+.work-row{display:grid;grid-template-columns:160px 1fr auto;gap:1.5rem 2.5rem;padding:2rem 0;border-bottom:1.5px solid var(--border);align-items:start;}
 .work-row:first-child{border-top:1.5px solid var(--border);}
-.work-date{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--muted);line-height:1.7;padding-top:0.3rem;}
+.work-date{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;color:var(--muted);white-space:nowrap;padding-top:0.3rem;}
 .work-title{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--green);margin-bottom:0.15rem;line-height:1.2;}
 .work-org{
-  font-family:var(--sans);
+  font-family:var(--serif);
   font-size:1rem;
-  font-weight:500;
-  color:var(--ink);
+  font-style:italic;
+  font-weight:400;
+  color:var(--green-mid);
   margin-bottom:0.55rem;
   letter-spacing:0;
 }
@@ -137,19 +138,62 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 .contact-link-arrow{font-size:1rem;color:var(--green-pale);}
 
 /* MOBILE */
+.mobile-nav{display:none;}
 @media(max-width:768px){
   .sidebar{display:none;}
   .main{margin-left:0;}
-  #hero,.section{padding:4rem 1.5rem;}
+  .mobile-nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    background:var(--green);
+    padding:1rem 1.5rem;
+  }
+  .mobile-nav-name{font-family:var(--serif);font-size:1rem;font-weight:900;color:var(--cream);}
+  .mobile-menu-btn{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--green-pale);background:none;border:1px solid rgba(200,221,209,0.4);
+    padding:0.4rem 0.8rem;cursor:pointer;
+  }
+  .mobile-menu{
+    display:none;position:fixed;top:52px;left:0;right:0;bottom:0;z-index:199;
+    background:var(--green);padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;
+    overflow-y:auto;
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    font-family:var(--mono);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;
+    text-decoration:none;color:rgba(248,245,238,0.7);padding:1rem 0;
+    border-bottom:1px solid rgba(200,221,209,0.15);
+  }
+  .mobile-menu a:hover{color:var(--cream);}
+  #hero,.section{padding:5rem 1.5rem 3rem;}
+  #hero{padding-top:6rem;min-height:auto;}
   .work-row{grid-template-columns:1fr;gap:0.5rem;}
   .work-badge{display:none;}
   .writing-grid{grid-template-columns:1fr;}
   .personal-grid{grid-template-columns:1fr;}
   .about-meta-grid{grid-template-columns:1fr;}
+  .hero-name{font-size:clamp(3rem,12vw,4.5rem);}
 }
 </style>
 </head>
 <body>
+
+<nav class="mobile-nav">
+  <span class="mobile-nav-name">Diana Panizo Madrid</span>
+  <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('open')">Menu</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="document.getElementById('mobileMenu').classList.remove('open')">Home</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#work" onclick="document.getElementById('mobileMenu').classList.remove('open')">Experience</a>
+  <a href="#writing" onclick="document.getElementById('mobileMenu').classList.remove('open')">Research</a>
+  <a href="#personal" onclick="document.getElementById('mobileMenu').classList.remove('open')">Beyond Work</a>
+  <a href="#awards" onclick="document.getElementById('mobileMenu').classList.remove('open')">Awards</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+</div>
 
 <aside class="sidebar">
   <div>
@@ -167,7 +211,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
   </div>
   <div class="sidebar-bottom">
     <a class="sidebar-link" href="mailto:dpanizoml@gmail.com">Email</a>
-    <a class="sidebar-link" href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <a class="sidebar-link" href="https://www.linkedin.com/in/diana-panizo-madrid-a06522231/" target="_blank">LinkedIn</a>
     <a class="sidebar-link" href="https://github.com/dpanizoml" target="_blank">GitHub</a>
   </div>
 </aside>
@@ -210,7 +254,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
     <div class="section-label"><span>Experience</span></div>
 
     <div class="work-row">
-      <div class="work-date">Summer 2025<br>Upcoming</div>
+      <div class="work-date">Summer 2025</div>
       <div>
         <div class="work-title">Forward Deployment Intern</div>
         <div class="work-org">Electric Twin</div>
@@ -220,7 +264,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
     </div>
 
     <div class="work-row">
-      <div class="work-date">Oct 2023<br>to present</div>
+      <div class="work-date">Oct 2023 to present</div>
       <div>
         <div class="work-title">UNDP AI Research Assistant</div>
         <div class="work-org">Muthukrishna Lab, LSE</div>
@@ -230,7 +274,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
     </div>
 
     <div class="work-row">
-      <div class="work-date">Jun 2025<br>Jul 2025</div>
+      <div class="work-date">Jun 2025 to Jul 2025</div>
       <div>
         <div class="work-title">AI Consulting Intern</div>
         <div class="work-org">Innova-tsn</div>
@@ -240,7 +284,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
     </div>
 
     <div class="work-row">
-      <div class="work-date">Feb 2024<br>Apr 2025</div>
+      <div class="work-date">Feb 2024 to Apr 2025</div>
       <div>
         <div class="work-title">AI Tutor</div>
         <div class="work-org">London School of Artificial Intelligence (LSAI)</div>
@@ -250,7 +294,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
     </div>
 
     <div class="work-row">
-      <div class="work-date">Apr 2022<br>Jun 2022</div>
+      <div class="work-date">Apr 2022 to Jun 2022</div>
       <div>
         <div class="work-title">Summer Intern</div>
         <div class="work-org">The Coca-Cola Company</div>
@@ -287,9 +331,9 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
         </div>
         <div class="writing-body">
           <div class="writing-meta">Behavioural Economics · Algorithmic Aversion · Financial Decision-Making</div>
-          <div class="writing-excerpt">Using secondary data from two pre-registered, incentivised experiments (N = 1,448), this dissertation asks who avoids delegating to robo-advisors and why. Overconfidence showed no effect on adoption; instead, financial literacy emerged as the operative construct. Both objective and subjective knowledge independently predicted higher adoption, and their difference, the overconfidence index, cancelled these effects. Among investment experience groups, pension investors showed the lowest adoption, consistent with institutional inertia rather than ignorance. Across all models, structural factors including age, gender, and study design outperformed psychological predictors, redirecting attention toward knowledge and structural barriers as the primary determinants of algorithmic aversion in financial delegation.</div>
+          <div class="writing-excerpt">Using secondary data from two pre-registered incentivised experiments (N = 1,448), this dissertation asks who avoids delegating to robo-advisors and why. The central finding: overconfidence had no effect on adoption. Financial literacy was the operative construct, with both objective and subjective knowledge independently predicting higher adoption. Structural factors, including age and gender, outperformed all psychological predictors.</div>
           <div class="writing-actions">
-            <a class="w-btn filled" href="YOUR_PDF_URL_HERE" target="_blank">Download PDF ↓</a>
+            <a class="w-btn filled" href="https://drive.google.com/file/d/1aGzYtH0AtgSyMAOY5ulRgBLUEJIopaR3/view?usp=sharing" target="_blank">Download PDF ↓</a>
           </div>
         </div>
       </div>
@@ -297,13 +341,13 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
       <div class="writing-card">
         <div class="writing-card-top">
           <div class="writing-type">Policy contribution · UNDP · 2024 to 2025</div>
-          <div class="writing-title">UNDP 2025 Human Development Report: AI4HD Dashboard</div>
+          <div class="writing-title">UNDP 2025 Human Development Report</div>
         </div>
         <div class="writing-body">
-          <div class="writing-meta">International AI Readiness · Asia-Pacific</div>
-          <div class="writing-excerpt">Supported development of an international AI readiness dashboard for the UNDP flagship report. Designed indicators, built data pipelines in R and Quarto, and led country-level case studies across 11 Asia-Pacific nations.</div>
+          <div class="writing-meta">UNDP · 2025</div>
+          <div class="writing-excerpt">Contributed to the 2025 Human Development Report as part of the Muthukrishna Lab's UNDP collaboration, supporting research on AI and human development across countries and regions.</div>
           <div class="writing-actions">
-            <a class="w-btn filled" href="https://hdr.undp.org" target="_blank">View report ↗</a>
+            <a class="w-btn filled" href="https://hdr.undp.org/content/human-development-report-2025" target="_blank">View report ↗</a>
           </div>
         </div>
       </div>
@@ -370,7 +414,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
     <p class="contact-sub">I am always open to conversations about AI governance, behavioural science, research collaborations, or opportunities.</p>
     <div class="contact-links-stack">
       <a class="contact-link-row" href="mailto:dpanizoml@gmail.com"><span class="contact-link-label">dpanizoml@gmail.com</span><span class="contact-link-arrow">↗</span></a>
-      <a class="contact-link-row" href="https://linkedin.com" target="_blank"><span class="contact-link-label">LinkedIn</span><span class="contact-link-arrow">↗</span></a>
+      <a class="contact-link-row" href="https://www.linkedin.com/in/diana-panizo-madrid-a06522231/" target="_blank"><span class="contact-link-label">LinkedIn</span><span class="contact-link-arrow">↗</span></a>
       <a class="contact-link-row" href="https://github.com/dpanizoml" target="_blank"><span class="contact-link-label">GitHub</span><span class="contact-link-arrow">↗</span></div>
       <a class="contact-link-row" href="https://doi.org/10.1080/19452829.2025.2517740" target="_blank"><span class="contact-link-label">Published paper</span><span class="contact-link-arrow">↗</span></a>
     </div>
