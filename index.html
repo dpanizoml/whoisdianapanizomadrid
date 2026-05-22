@@ -33,7 +33,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 .sidebar-bottom{display:flex;flex-direction:column;gap:0.6rem;}
 .sidebar-link{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--green-pale);transition:color 0.2s;display:flex;align-items:center;gap:0.4rem;}
 .sidebar-link:hover{color:var(--cream);}
-.sidebar-link::after{content:'&#8599;';font-size:9px;}
+.sidebar-link::after{content:'↗';font-size:9px;}
 
 /* MAIN */
 .main{margin-left:var(--sidebar);flex:1;min-height:100vh;}
@@ -44,7 +44,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 .section-label{display:flex;align-items:center;gap:1rem;margin-bottom:3rem;}
 .section-label span{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
 .section-label::after{content:'';flex:1;height:1.5px;background:var(--border);}
-.section-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,3.8rem);font-weight:900;color:var(--green);line-height:1.0;margin-bottom:1.5rem;}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:900;color:var(--green);line-height:1.05;margin-bottom:1.25rem;}
 .section-title em{font-style:italic;color:var(--green-light);}
 
 /* HERO */
@@ -64,24 +64,11 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 
 /* ABOUT */
 #about{background:var(--cream-dark);}
-.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
 .about-text p{color:var(--muted);margin-bottom:1rem;font-size:1.02rem;}
 .about-text p:last-child{margin-bottom:0;}
-.about-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2rem;}
+.about-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2rem;margin-top:2.5rem;padding-top:2rem;border-top:1.5px solid var(--border);}
 .meta-k{font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-light);margin-bottom:0.2rem;}
 .meta-v{font-size:0.93rem;color:var(--ink);line-height:1.5;}
-
-/* EDUCATION */
-#education{background:var(--green);}
-#education .section-label span{color:var(--green-pale);}
-#education .section-label::after{background:rgba(200,221,209,0.3);}
-#education .work-title{color:var(--cream);}
-#education .work-org{color:var(--green-pale);}
-#education .work-desc{color:rgba(248,245,238,0.75);}
-#education .work-date{color:rgba(248,245,238,0.5);}
-#education .work-row{border-bottom-color:rgba(200,221,209,0.2);}
-#education .work-row:first-child{border-top-color:rgba(200,221,209,0.2);}
-#education .work-badge{background:rgba(255,255,255,0.1);color:var(--green-pale);border-color:rgba(200,221,209,0.3);}
 
 /* EXPERIENCE */
 .work-row{display:grid;grid-template-columns:160px 1fr auto;gap:1.5rem 2.5rem;padding:2rem 0;border-bottom:1.5px solid var(--border);align-items:start;}
@@ -117,21 +104,20 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 .w-btn.filled:hover{background:var(--green-mid);}
 
 /* PERSONAL */
-#personal{background:var(--green);}
-#personal .section-label span{color:var(--green-pale);}
-#personal .section-label::after{background:rgba(200,221,209,0.3);}
-.personal-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
-.personal-card{border:1.5px solid rgba(200,221,209,0.25);overflow:hidden;background:rgba(255,255,255,0.05);}
+.personal-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;}
+.personal-card{border:1.5px solid var(--border);overflow:hidden;}
 .personal-card-header{padding:1.5rem 1.5rem 0;display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem;}
-.personal-icon{width:44px;height:44px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(200,221,209,0.3);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-family:var(--mono);letter-spacing:0.05em;color:var(--green-pale);flex-shrink:0;}
-.personal-card-title{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--cream);line-height:1.2;}
-.personal-card-sub{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green-pale);margin-top:0.2rem;}
-.personal-card-body{padding:0 1.5rem 1.5rem;font-size:0.9rem;color:rgba(248,245,238,0.75);line-height:1.75;}
-.personal-card.accent{background:rgba(255,255,255,0.1);border-color:var(--green-pale);}
+.personal-icon{width:44px;height:44px;background:var(--green-wash);border:1.5px solid var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.personal-card-title{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--green);line-height:1.2;}
+.personal-card-sub{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green-light);margin-top:0.2rem;}
+.personal-card-body{padding:0 1.5rem 1.5rem;font-size:0.9rem;color:var(--muted);line-height:1.75;}
+.personal-card.accent{background:var(--green);}
+.personal-card.accent .personal-card-title{color:var(--cream);}
+.personal-card.accent .personal-card-sub{color:var(--green-pale);}
+.personal-card.accent .personal-card-body{color:rgba(248,245,238,0.8);}
+.personal-card.accent .personal-icon{background:rgba(255,255,255,0.1);border-color:rgba(200,221,209,0.4);}
 
 /* AWARDS */
-#awards{background:var(--cream-dark);}
-.awards-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem;}
 .awards-row{display:flex;justify-content:space-between;align-items:baseline;gap:2rem;padding:1.5rem 0;border-bottom:1.5px solid var(--border);}
 .awards-row:first-child{border-top:1.5px solid var(--border);}
 .award-title{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--green);}
@@ -184,13 +170,11 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
   .mobile-menu a:hover{color:var(--cream);}
   #hero,.section{padding:5rem 1.5rem 3rem;}
   #hero{padding-top:6rem;min-height:auto;}
-  .about-inner{grid-template-columns:1fr;}
   .work-row{grid-template-columns:1fr;gap:0.5rem;}
   .work-badge{display:none;}
   .writing-grid{grid-template-columns:1fr;}
   .personal-grid{grid-template-columns:1fr;}
   .about-meta-grid{grid-template-columns:1fr;}
-  .awards-grid{grid-template-columns:1fr;}
   .hero-name{font-size:clamp(3rem,12vw,4.5rem);}
 }
 </style>
@@ -204,7 +188,6 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 <div class="mobile-menu" id="mobileMenu">
   <a href="#hero" onclick="document.getElementById('mobileMenu').classList.remove('open')">Home</a>
   <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
-  <a href="#education" onclick="document.getElementById('mobileMenu').classList.remove('open')">Education</a>
   <a href="#work" onclick="document.getElementById('mobileMenu').classList.remove('open')">Experience</a>
   <a href="#writing" onclick="document.getElementById('mobileMenu').classList.remove('open')">Research</a>
   <a href="#personal" onclick="document.getElementById('mobileMenu').classList.remove('open')">Beyond Work</a>
@@ -219,7 +202,6 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
     <ul class="sidebar-nav">
       <li><a href="#hero" class="active"><span class="nav-dot"></span>Home</a></li>
       <li><a href="#about"><span class="nav-dot"></span>About</a></li>
-      <li><a href="#education"><span class="nav-dot"></span>Education</a></li>
       <li><a href="#work"><span class="nav-dot"></span>Experience</a></li>
       <li><a href="#writing"><span class="nav-dot"></span>Research</a></li>
       <li><a href="#personal"><span class="nav-dot"></span>Beyond Work</a></li>
@@ -230,6 +212,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
   <div class="sidebar-bottom">
     <a class="sidebar-link" href="mailto:dpanizoml@gmail.com">Email</a>
     <a class="sidebar-link" href="https://www.linkedin.com/in/diana-panizo-madrid-a06522231/" target="_blank">LinkedIn</a>
+    <a class="sidebar-link" href="https://github.com/dpanizoml" target="_blank">GitHub</a>
   </div>
 </aside>
 
@@ -254,39 +237,16 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
   <section id="about" class="section">
     <div class="section-label"><span>About</span></div>
     <h2 class="section-title">Behavioural science<br>meets <em>real-world AI.</em></h2>
-    <div class="about-inner">
-      <div class="about-text">
-        <p>I am a researcher and analyst working at the intersection of behavioural economics, cognitive psychology, and AI. My work asks how people actually think and decide, and what that means for the systems being built around them.</p>
-        <p>For nearly three years I have worked at the Muthukrishna Lab at LSE, contributing to UNDP research on AI and human development. I am a published co-author, a Nova Talent member, and hold academic excellence awards in Economics and Psychology.</p>
-      </div>
+    <div class="about-text">
+      <p>I am a researcher and analyst with a background in behavioural economics, cognitive psychology, and data science. For nearly three years I have worked at the Muthukrishna Lab at LSE, contributing to UNDP research on AI and human development, including the 2025 Human Development Report and the AI4HD Dashboard.</p>
+      <p>My dissertation examined algorithmic aversion in financial decision-making, asking who avoids delegating to algorithms in real, incentivised investment choices, and through which psychological mechanisms. I am also a published co-author in the Journal of Human Development and Capabilities.</p>
+      <p>I am a Nova Talent member, IE High Potential Award recipient, and hold two Academic Excellence Awards from LSE in Economics and Psychology.</p>
+    </div>
     <div class="about-meta-grid">
+      <div><div class="meta-k">Currently</div><div class="meta-v">AI Research Assistant, Muthukrishna Lab at LSE</div></div>
+      <div><div class="meta-k">This summer</div><div class="meta-v">Incoming Intern, Electric Twin (AI startup)</div></div>
+      <div><div class="meta-k">Next</div><div class="meta-v">MPhil AI, Data and Algorithm Ethics, Cambridge</div></div>
       <div><div class="meta-k">Languages</div><div class="meta-v">Spanish (native), English (native), French (basic)</div></div>
-      <div><div class="meta-k">Technical</div><div class="meta-v">R Studio, Python, Microsoft Copilot Studio, Quarto, GitHub, Excel</div></div>
-      <div><div class="meta-k">Methods</div><div class="meta-v">Quantitative research, regression analysis, text mining, topic modelling, pre-registration</div></div>
-      <div><div class="meta-k">Domains</div><div class="meta-v">AI governance, behavioural economics, algorithm ethics, human development</div></div>
-    </div>
-    </div>
-  </section>
-
-  <section id="education" class="section">
-    <div class="section-label"><span>Education</span></div>
-    <div class="work-row">
-      <div class="work-date">2023 to 2026</div>
-      <div>
-        <div class="work-title">BSc Psychological and Behavioural Science with Economics</div>
-        <div class="work-org">The London School of Economics and Political Science</div>
-        <div class="work-desc">First Class Honours. Covered cognitive psychology, behavioural economics, statistics, and data science. Dissertation on algorithmic aversion in financial decision-making. Project investigating the extent to which current AI models capture psychological mechanisms underlying irrational human behaviour.</div>
-      </div>
-      <span class="work-badge">First Class</span>
-    </div>
-    <div class="work-row">
-      <div class="work-date">2020 to 2023</div>
-      <div>
-        <div class="work-title">Full International Baccalaureate</div>
-        <div class="work-org">Greengates School, Mexico City</div>
-        <div class="work-desc">42 points. Subjects: Economics, Psychology, Biology, Mathematics, English, Spanish. Cambridge IGCSE: 8 subjects, grades A to A*.</div>
-      </div>
-      <span class="work-badge">42 pts</span>
     </div>
   </section>
 
@@ -318,7 +278,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
       <div>
         <div class="work-title">AI Consulting Intern</div>
         <div class="work-org">Innova-tsn</div>
-        <div class="work-desc">Contributed to the development of intelligent agents using Microsoft Copilot Studio for a client consulting project. The project was recognised with the HESPA Innovation Award and DataIQ's Most Innovative Use of AI in Europe. Supported AI-driven business solutions spanning BI, analytics, and cloud strategy.</div>
+        <div class="work-desc">Led development of intelligent agents using Microsoft Copilot Studio for a client consulting project. The project was recognised with the HESPA Innovation Award and DataIQ's Most Innovative Use of AI in Europe. Designed and promoted AI-driven business solutions spanning BI, analytics, and cloud strategy.</div>
       </div>
       <span class="work-badge">Consulting</span>
     </div>
@@ -359,6 +319,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
           <div class="writing-excerpt">Co-authored with the Muthukrishna Lab and UNDP. Examines what it takes for AI to genuinely advance education and human development, placing technological adoption within a framework of cultural evolution and institutional capacity.</div>
           <div class="writing-actions">
             <a class="w-btn filled" href="https://doi.org/10.1080/19452829.2025.2517740" target="_blank">Read paper &#8599;</a>
+            <a class="w-btn" href="https://doi.org/10.1080/19452829.2025.2517740" target="_blank">DOI link</a>
           </div>
         </div>
       </div>
@@ -372,7 +333,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
           <div class="writing-meta">Behavioural Economics &#183; Algorithmic Aversion &#183; Financial Decision-Making</div>
           <div class="writing-excerpt">Using secondary data from two pre-registered incentivised experiments (N = 1,448), this dissertation asks who avoids delegating to robo-advisors and why. The central finding: overconfidence had no effect on adoption. Financial literacy was the operative construct, with both objective and subjective knowledge independently predicting higher adoption. Structural factors, including age and gender, outperformed all psychological predictors.</div>
           <div class="writing-actions">
-            <a class="w-btn filled" href="https://drive.google.com/file/d/1aGzYtH0AtgSyMAOY5ulRgBLUEJIopaR3/view?usp=sharing" target="_blank">Read paper &#8599;</a>
+            <a class="w-btn filled" href="https://drive.google.com/file/d/1aGzYtH0AtgSyMAOY5ulRgBLUEJIopaR3/view?usp=sharing" target="_blank">Download PDF &#8595;</a>
           </div>
         </div>
       </div>
@@ -386,21 +347,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
           <div class="writing-meta">UNDP &#183; 2025</div>
           <div class="writing-excerpt">Contributed to the 2025 Human Development Report as part of the Muthukrishna Lab's UNDP collaboration, supporting research on AI and human development across countries and regions.</div>
           <div class="writing-actions">
-            <a class="w-btn filled" href="https://hdr.undp.org/content/human-development-report-2025" target="_blank">Read paper &#8599;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="writing-card">
-        <div class="writing-card-top">
-          <div class="writing-type">Independent research paper &#183; LSE &#183; 2025</div>
-          <div class="writing-title">From Computational Rationality to Psychological Realism</div>
-        </div>
-        <div class="writing-body">
-          <div class="writing-meta">AI Modelling &#183; Behavioural Science &#183; Cognitive Psychology</div>
-          <div class="writing-excerpt">To what extent do current AI models capture the psychological mechanisms underlying irrational human behaviour? This paper critiques deep and reinforcement learning through a cognitive, social, and individual differences lens, and proposes an integrated framework grounded in Marr's levels of analysis.</div>
-          <div class="writing-actions">
-            <a class="w-btn filled" href="https://drive.google.com/file/d/18byR_Kh7gEUiiTJsI-eChDkD5_HqPeCw/view?usp=sharing" target="_blank">Read paper &#8599;</a>
+            <a class="w-btn filled" href="https://hdr.undp.org/content/human-development-report-2025" target="_blank">View report &#8599;</a>
           </div>
         </div>
       </div>
@@ -414,7 +361,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 
       <div class="personal-card accent">
         <div class="personal-card-header">
-          <div class="personal-icon" style="font-size:1.1rem;font-family:var(--mono);">CRIS</div>
+          <div class="personal-icon">&#127383;</div>
           <div>
             <div class="personal-card-title">Volunteer</div>
             <div class="personal-card-sub">CRIS Cancer Foundation</div>
@@ -425,7 +372,7 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 
       <div class="personal-card">
         <div class="personal-card-header">
-          <div class="personal-icon" style="font-size:1.1rem;font-family:var(--mono);">SPT</div>
+          <div class="personal-icon">&#127939;</div>
           <div>
             <div class="personal-card-title">Sport</div>
             <div class="personal-card-sub">Athletics &#183; Volleyball</div>
@@ -439,7 +386,6 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
 
   <section id="awards" class="section">
     <div class="section-label"><span>Awards and Recognition</span></div>
-    <div class="awards-grid">
     <div class="awards-row">
       <div><div class="award-title">Nova Talent Member</div><div class="award-sub">International network recognising high-potential individuals across disciplines.</div></div>
       <span class="award-yr">2024</span>
@@ -449,13 +395,12 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:
       <span class="award-yr">2024</span>
     </div>
     <div class="awards-row">
-      <div><div class="award-title">Two Academic Excellence Awards</div><div class="award-sub">Subject awards in Economics and Psychology.</div></div>
+      <div><div class="award-title">Two Academic Excellence Awards</div><div class="award-sub">Subject awards in Economics and Psychology, LSE.</div></div>
       <span class="award-yr">LSE</span>
     </div>
     <div class="awards-row">
       <div><div class="award-title">Inside LVMH Certificate</div><div class="award-sub">8-week course in Operations and Supply Chain.</div></div>
       <span class="award-yr">2024</span>
-    </div>
     </div>
   </section>
 
@@ -487,5 +432,4 @@ window.addEventListener('scroll', () => {
 
 </body>
 </html>
-   
- 
+
