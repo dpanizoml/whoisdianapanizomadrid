@@ -1,0 +1,6 @@
+# Jupyter notebooks and Python scripts not part of the site
+*.ipynb
+*.py
+
+# Redundant root-level workflow file
+deploy.yml
